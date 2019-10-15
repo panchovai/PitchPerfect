@@ -14,9 +14,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     var audioRecorder : AVAudioRecorder!
 
-    @IBOutlet weak var RecordingLabel: UILabel!
+    @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopRecordingButton: UIButton!
+    
     
     override func viewDidLoad() {
         
@@ -34,7 +35,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func recordAudio(_ sender: Any) {
         
         print("The Record Button was Pressed")
-        RecordingLabel.text = "Recording in Progress"
+        recordingLabel.text = "Recording in Progress"
         stopRecordingButton.isEnabled = true
         recordButton.isEnabled = false
         
@@ -61,7 +62,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         print("Stop Recording Button was Pressed")
         recordButton.isEnabled = true
         stopRecordingButton.isEnabled = false
-        RecordingLabel.text = "Tap to Record"
+        recordingLabel.text = "Tap to Record"
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
@@ -70,9 +71,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         
         print("Audio finished recording")
-        
         if flag{
-            performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
+        performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
         }else
         {
           print("Recording was not successful")
