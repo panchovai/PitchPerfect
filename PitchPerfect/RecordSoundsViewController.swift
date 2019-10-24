@@ -31,7 +31,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         print("viewWillAppear Called")
     }
     
-
+//Recording Action funtion
     @IBAction func recordAudio(_ sender: Any) {
         
         print("The Record Button was Pressed")
