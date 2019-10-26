@@ -19,7 +19,6 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var vaderButton: UIButton!
     @IBOutlet weak var echoButton: UIButton!
     @IBOutlet weak var reverbButton: UIButton!
-    @IBOutlet weak var stopButton: UIButton!
     
     var recordedAudioURL : URL!
     var audioFile: AVAudioFile!
@@ -49,10 +48,6 @@ class PlaySoundsViewController: UIViewController {
         configureUI(.playing)
     }
     
-    @IBAction func stopButtonPressed(_sender: AnyObject){
-        
-        print("stop audio button pressed")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
