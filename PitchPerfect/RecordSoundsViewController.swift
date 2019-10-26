@@ -13,7 +13,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     
     var audioRecorder : AVAudioRecorder!
-
+    
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopRecordingButton: UIButton!
@@ -31,7 +31,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         print("viewWillAppear Called")
     }
     
-//Recording Action funtion
+    //Recording Action funtion
     @IBAction func recordAudio(_ sender: Any) {
         
         print("The Record Button was Pressed")
@@ -47,7 +47,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
         
-      
+        
         
         try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
         audioRecorder.delegate = self
@@ -72,14 +72,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         
         print("Audio finished recording")
         if flag{
-        performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
+            performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
         }else
         {
-          print("Recording was not successful")
+            print("Recording was not successful")
         }
         
     }
-  //Prepare segueway to connect with PlaySoundsViewController
+    //Prepare segueway to connect with PlaySoundsViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "stopRecording"
         {
@@ -88,7 +88,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             playSoundsVC.recordedAudioURL = recordedAudioURL
         }
     }
-   
+    
     
 }
 
